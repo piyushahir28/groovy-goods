@@ -1,0 +1,42 @@
+@import "../../variable.css";
+
+.footer {
+  display: flex;
+  flex-flow: row wrap;
+  border-top: 1px solid;
+  justify-content: space-between;
+  padding: 1rem;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  position: fixed;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
+}
+
+.footer-icons {
+  display: flex;
+  justify-content: space-between;
+  width: 100px;
+}
+
+.footer-icons .icon {
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .footer {
+    justify-content: space-around;
+  }
+  .copyright {
+    font-size: 1.2rem;
+  }
+  .footer-icons {
+    width: 200px;
+  }
+  .footer-icons .icon {
+    font-size: 2rem;
+    cursor: pointer;
+  }
+}
