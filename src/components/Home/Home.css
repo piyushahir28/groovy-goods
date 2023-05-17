@@ -1,0 +1,122 @@
+@import "../../variable.css";
+
+.container {
+  display: flex;
+  flex: auto;
+  height: 50vh;
+  align-items: center;
+}
+
+.main-header {
+  padding: 0.8rem;
+  align-self: center;
+  text-align: center;
+}
+
+.main-header button {
+  font-size: 1.4rem;
+  cursor: pointer;
+  font-weight: 600;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 2rem;
+}
+
+.main-header span {
+  color: var(--primary-color);
+}
+
+.main-image {
+  display: none;
+}
+
+.category-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.category-header h2 {
+  font-size: 1.8rem;
+}
+
+.category-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  padding: 0.8rem;
+  gap: 1rem;
+}
+
+.category-card {
+  position: relative;
+  width: 350px;
+  height: 25vh;
+  border-radius: 1.5rem;
+}
+
+.category-card:hover {
+  border: 0.4rem solid var(--primary-color);
+  cursor: pointer;
+}
+
+.category-card .card-text {
+  font-size: 1.5rem;
+  height: 35px;
+  top: 40px;
+  bottom: 50px;
+  left: 0;
+  right: 0;
+  position: absolute;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  text-align: center;
+}
+
+.category-card img {
+  border-radius: 1.2rem;
+  width: inherit;
+  height: inherit;
+}
+
+@media (min-width: 768px) {
+  .container {
+    display: flex;
+    flex: auto;
+    height: 70vh;
+    align-items: center;
+  }
+
+  .main-header {
+    padding: 0.8rem;
+    align-self: center;
+    text-align: center;
+  }
+
+  .main-header span {
+    color: var(--primary-color);
+  }
+
+  .main-header button {
+    font-size: 2rem;
+    cursor: pointer;
+    font-weight: 600;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 2rem;
+  }
+
+  .main-image {
+    display: block;
+    padding: 0.8rem;
+  }
+
+  .main-image img {
+    width: 450px;
+    height: 400px;
+  }
+}
