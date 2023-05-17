@@ -5,7 +5,7 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1;
+  z-index: 100;
   padding: 0.5rem 1rem;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   display: flex;
@@ -18,7 +18,7 @@
 }
 
 .nav-image {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .nav-input {
@@ -26,7 +26,7 @@
 }
 
 .nav-input input {
-  font-size: 1.3rem;
+  font-size: 1rem;
   background-color: var(--secondary-color);
   border: 0.1rem solid var(--primary-color);
   border-radius: 1rem;
@@ -37,7 +37,7 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  width: 250px;
+  width: 200px;
 }
 
 .nav-btn button {
@@ -60,12 +60,16 @@
   position: relative;
 }
 
+.nav-btn .user-l {
+  font-size: 1.6rem;
+}
+
 .icons {
   padding-top: 0.3rem;
 }
 
 .icons p {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   position: absolute;
   top: -0.9rem;
   right: -0.3rem;
@@ -78,6 +82,7 @@
 @media (min-width: 768px) {
   .nav-bar {
     height: 3rem;
+    z-index: 100;
   }
   .nav-input {
     order: 0;
@@ -102,5 +107,8 @@
     padding: 0rem 0.3rem;
     border: 1px solid var(--primary-color);
     border-radius: 20rem;
+  }
+  .nav-btn .user-l {
+    font-size: 2rem;
   }
 }

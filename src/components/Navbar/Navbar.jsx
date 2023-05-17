@@ -19,15 +19,15 @@ export const Navbar = () => {
             <button>Explore</button>
           </div>
           <div className="nav-btn icons">
-            <FavoriteBorderIcon fontSize="large" />
+            <FavoriteBorderIcon className="user-l" />
             <p>0</p>
           </div>
           <div className="nav-btn icons">
-            <ShoppingBagIcon fontSize="large" />
+            <ShoppingBagIcon className="user-l" />
             <p>0</p>
           </div>
           <div className="nav-btn icons">
-            <AccountCircleIcon fontSize="large" />
+            <AccountCircleIcon className="user-l" />
           </div>
         </div>
       </div>
