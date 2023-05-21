@@ -5,6 +5,7 @@ import axios from "axios";
 
 import { Footer } from "../Footer/Footer";
 import "./Home.css";
+import { NavLink } from "react-router-dom";
 
 export const Home = () => {
   const [category, setCategory] = useState([]);
@@ -29,7 +30,9 @@ export const Home = () => {
             Groove into Funky Ecommerce Delights -{" "}
             <span>Shop, Jam, Repeat!</span>
           </h1>
-          <button>Shop Now</button>
+          <NavLink className="nav-link" to="/products">
+            <button>Shop Now</button>
+          </NavLink>
         </div>
       </div>
       <div className="category-header">

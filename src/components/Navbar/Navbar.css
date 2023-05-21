@@ -17,6 +17,11 @@
   row-gap: 0.3rem;
 }
 
+.nav-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .nav-image {
   font-size: 1.2rem;
 }
