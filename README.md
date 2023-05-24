@@ -1,3 +1,3 @@
-## E-Commerce Backend
+## Groovy Goods
 
-This folder contains the Mock Backend created for E-Commerce App. It contains different API end-points and database configuration for building E-Commerce; so that you can focus on building Frontend.
+An E-Commerce App Created Using React JS and mockBee (BackEnd). Project is in development right now...
