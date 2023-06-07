@@ -12,6 +12,16 @@ import { Login } from "./pages/Login/Login";
 import { SignUp } from "./pages/SignUP/SignUp";
 
 function App() {
+  const testAPI = false;
+
+  if (testAPI) {
+    return (
+      <>
+        <Mockman />
+      </>
+    );
+  }
+
   return (
     <div className="App">
       <Navbar />
