@@ -5,7 +5,7 @@ export const LoginService = async ({ email, password }) => {
     email,
     password,
   });
-  return response.data;
+  return response;
 };
 
 export const SignUpService = async ({ email, password, name }) => {
@@ -14,7 +14,7 @@ export const SignUpService = async ({ email, password, name }) => {
     password,
     name,
   });
-  return response.data;
+  return response;
 };
 
 export const getAllProducts = async () => {

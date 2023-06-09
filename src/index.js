@@ -6,7 +6,7 @@ import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
 import { ContextProvider } from "./context/DataContext";
-import { ContextAuth } from "./context/AuthContext";
+import { AuthProvider } from "./context/AuthContext";
 
 // Call make Server
 makeServer();
@@ -15,9 +15,9 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <ContextProvider>
-        <ContextAuth>
+        <AuthProvider>
           <App />
-        </ContextAuth>
+        </AuthProvider>
       </ContextProvider>
     </Router>
   </React.StrictMode>,

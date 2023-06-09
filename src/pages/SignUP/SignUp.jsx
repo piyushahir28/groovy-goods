@@ -1,11 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import "../Login/Login.css";
+import { AuthContext } from "../../context/AuthContext";
 
 export const SignUp = () => {
-  const [formData, setFormData] = useState([{ email: "", password: "" }]);
-  const formHandler = () => {};
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    name: "",
+  });
+  const { signupHandler } = useContext(AuthContext);
+  const formHandler = () => {
+    signupHandler(formData.email, formData.password, formData.name);
+  };
 
   return (
     <>
@@ -14,7 +22,15 @@ export const SignUp = () => {
         <form onSubmit={formHandler}>
           <div className="input-container">
             <label htmlFor="userName">Name</label>
-            <input id="userName" type="text" required placeholder="John" />
+            <input
+              id="userName"
+              type="text"
+              onChange={(e) =>
+                setFormData({ ...formData, name: e.target.value })
+              }
+              required
+              placeholder="John"
+            />
           </div>
           <div className="input-container">
             <label htmlFor="userEmail">Email</label>

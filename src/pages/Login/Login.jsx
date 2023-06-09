@@ -1,23 +1,33 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import "./Login.css";
+import { AuthContext } from "../../context/AuthContext";
 
 export const Login = () => {
-  const [formData, setFormData] = useState([{ email: "", password: "" }]);
-  const formHandler = () => {};
+  const [formData, setFormData] = useState({ email: "", password: "" });
+  const { loginHandler, token } = useContext(AuthContext);
+
+  const onSubmitHandler = () => {
+    loginHandler(formData.email, formData.password);
+  };
+
+  if (token) {
+    return <h1>"Succefuly Logged In"</h1>;
+  }
 
   return (
     <>
       <div className="login-container">
         <h3>Sign in</h3>
-        <form onSubmit={formHandler}>
+        <form onSubmit={onSubmitHandler}>
           <div className="input-container">
             <label htmlFor="userEmail">Email</label>
             <input
               onChange={(e) =>
                 setFormData({ ...formData, email: e.target.value })
               }
+              value={formData.email}
               id="userEmail"
               type="email"
               required
@@ -31,6 +41,7 @@ export const Login = () => {
               onChange={(e) =>
                 setFormData({ ...formData, password: e.target.value })
               }
+              value={formData.password}
               id="userPassword"
               required
             />
@@ -41,12 +52,13 @@ export const Login = () => {
           <div className="login-button">
             <button
               type="submit"
-              onClick={() =>
+              onClick={() => {
                 setFormData({
-                  email: "guest@piyushahir.com",
-                  password: "piyush@123",
-                })
-              }
+                  ...formData,
+                  email: "adarshbalika@gmail.com",
+                  password: "adarshbalika",
+                });
+              }}
             >
               Login as Guest
             </button>
