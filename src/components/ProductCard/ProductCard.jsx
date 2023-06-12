@@ -3,9 +3,10 @@ import StarIcon from "@mui/icons-material/Star";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 import "./ProductCard.css";
+import { useNavigate } from "react-router-dom";
 
 export const ProductCard = ({ product }) => {
-  const prdImg = "img-product.jpg";
+  const navigate = useNavigate();
   const {
     _id,
     image,
@@ -22,7 +23,12 @@ export const ProductCard = ({ product }) => {
   return (
     <>
       <div className="product-card">
-        <img className="product-img" src={prdImg} alt="product" />
+        <img
+          onClick={() => navigate(`/singleproduct/${_id}`)}
+          className="product-img"
+          src={image}
+          alt="product"
+        />
         {trending && <span className="top-left">Trending</span>}
         <span className="wishlist-icon">
           <FavoriteBorderIcon />
