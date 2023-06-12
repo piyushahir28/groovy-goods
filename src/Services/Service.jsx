@@ -30,7 +30,7 @@ export const getAllCategories = async () => {
 export const getSingleProduct = async (productID) => {
   const response = await axios.get(`/api/products/${productID}`);
   if (response.status === 200 || response.status === 201) {
-    return response.data.product;
+    return response;
   }
 };
 
