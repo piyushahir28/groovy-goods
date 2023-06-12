@@ -5,19 +5,13 @@ import axios from "axios";
 
 import { Footer } from "../Footer/Footer";
 import "./Home.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { DataContext } from "../../context/DataContext";
 
 export const Home = () => {
-  const [category, setCategory] = useState([]);
-
-  const getCategories = async () => {
-    const response = await axios.get("/api/categories");
-    setCategory(response.data.categories);
-  };
-
-  useEffect(() => {
-    getCategories();
-  }, []);
+  const { state, dispatch } = useContext(DataContext);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -44,8 +38,19 @@ export const Home = () => {
       </div>
       <br />
       <div className="category-container">
-        {category?.map(({ _id, categoryName, description }) => (
-          <div key={_id} className="category-card">
+        {state.categories.map(({ _id, categoryName }) => (
+          <div
+            key={_id}
+            onClick={() => {
+              dispatch({
+                type: "CHANGE_FILTER",
+                payload: categoryName,
+                filterType: "category",
+              });
+              navigate("/products");
+            }}
+            className="category-card"
+          >
             <p className="card-text">{categoryName}</p>
             <img src="./category.png" alt="tshirt" />
           </div>
