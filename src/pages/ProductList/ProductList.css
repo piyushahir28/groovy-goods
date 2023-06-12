@@ -1,1 +1,30 @@
 @import "/src/variable.css";
+
+.product-list {
+  display: flex;
+  flex-direction: row;
+}
+
+.filter-section {
+  width: 180px;
+  box-sizing: border-box;
+  padding: 0rem 1rem;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.indFilter {
+  margin-top: 1rem;
+}
+
+label {
+  font-weight: 300;
+}
+
+.product-section {
+  height: 100vh;
+  overflow: auto;
+  margin: 2rem 0rem 2rem 2rem;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 2rem;
+}

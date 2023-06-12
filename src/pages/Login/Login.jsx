@@ -8,7 +8,8 @@ export const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const { loginHandler, token } = useContext(AuthContext);
 
-  const onSubmitHandler = () => {
+  const onSubmitHandler = (e) => {
+    // e.preventDefault();
     loginHandler(formData.email, formData.password);
   };
 

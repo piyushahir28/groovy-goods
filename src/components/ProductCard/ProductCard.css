@@ -1,8 +1,10 @@
+@import "/src/variable.css";
+
 .product-card {
   position: relative;
   box-sizing: border-box;
   width: 200px;
-  height: 300px;
+  height: 330px;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
@@ -25,7 +27,7 @@
   position: absolute;
   right: 0;
   background-color: skyblue;
-  padding: 4px;
+  padding: 2px 4px 0px 4px;
   border-radius: 0 5px;
 }
 
@@ -33,7 +35,7 @@
   display: flex;
   position: absolute;
   gap: 2px;
-  top: 171px;
+  top: 184px;
   left: 0;
   background-color: skyblue;
   padding: 3px 5px;
@@ -42,7 +44,7 @@
 }
 
 .rating-icon .material-icon {
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .product-title {
@@ -76,4 +78,9 @@
   width: 90%;
   font-size: 18px;
   padding: 4px 30px;
+  border: none;
+  border-radius: 0.3rem;
+  background-color: var(--primary-color);
+  cursor: pointer;
+  color: var(--secondary-color);
 }

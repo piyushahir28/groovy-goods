@@ -3,7 +3,6 @@ import { createContext } from "react";
 
 import { LoginService, SignUpService } from "../Services/Service";
 import { useLocation, useNavigate } from "react-router-dom";
-import { ContactsOutlined } from "@mui/icons-material";
 
 export const AuthContext = createContext();
 

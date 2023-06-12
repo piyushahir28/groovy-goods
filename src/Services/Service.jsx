@@ -19,16 +19,12 @@ export const SignUpService = async ({ email, password, name }) => {
 
 export const getAllProducts = async () => {
   const response = await axios.get("/api/products");
-  if (response.status === 200 || response.status === 201) {
-    return response.data.products;
-  }
+  return response;
 };
 
 export const getAllCategories = async () => {
   const response = await axios.get("/api/categories");
-  if (response.status === 200 || response.status === 201) {
-    return response.data.categories;
-  }
+  return response;
 };
 
 export const getSingleProduct = async (productID) => {
