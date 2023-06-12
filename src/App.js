@@ -2,7 +2,6 @@ import { Routes, Route } from "react-router-dom";
 
 import "./App.css";
 
-import Mockman from "mockman-js";
 import { Navbar } from "./components/Navbar/Navbar";
 import { HomePage } from "./pages/Home/HomePage";
 import { ProductList } from "./pages/ProductList/ProductList";
@@ -11,18 +10,10 @@ import { WishList } from "./pages/WishList/WishList";
 import { Login } from "./pages/Login/Login";
 import { SignUp } from "./pages/SignUP/SignUp";
 import { PrivateRoute } from "./components/PrivateRoute/PrivateRoute";
+import { SingleProduct } from "./pages/SingleProduct/SingleProduct";
+import { TestAPI } from "./mockman";
 
 function App() {
-  const testAPI = false;
-
-  if (testAPI) {
-    return (
-      <>
-        <Mockman />
-      </>
-    );
-  }
-
   return (
     <div className="App">
       <Navbar />
@@ -47,6 +38,8 @@ function App() {
         />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/singleproduct/:productID" element={<SingleProduct />} />
+        <Route path="/mockman" element={<TestAPI />} />
       </Routes>
     </div>
   );
