@@ -8,7 +8,7 @@ import { v4 as uuid } from "uuid";
 export const products = [
   {
     _id: uuid(),
-    image: "https://example.com/product1.jpg",
+    image: "img-product.jpg",
     category: "Women",
     rating: "4.5",
     description: "Womens Floral Print Maxi Dress",
@@ -21,7 +21,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    image: "https://example.com/product2.jpg",
+    image: "img-product.jpg",
     category: "Men",
     rating: "4.2",
     description: "Mens Slim Fit Denim Jeans",
@@ -34,7 +34,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    image: "https://example.com/product3.jpg",
+    image: "img-product.jpg",
     category: "Kids",
     rating: "4.7",
     description: "Kids' Cartoon Print T-shirt",
@@ -47,7 +47,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    image: "https://example.com/product4.jpg",
+    image: "img-product.jpg",
     category: "Men",
     rating: "4.0",
     description: "Men's Classic Oxford Shirt",
@@ -60,7 +60,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    image: "https://example.com/product5.jpg",
+    image: "img-product.jpg",
     category: "Women",
     rating: "4.3",
     description: "Women's High-Waisted Skinny Jeans",
@@ -74,7 +74,7 @@ export const products = [
 
   {
     _id: uuid(),
-    image: "https://example.com/product6.jpg",
+    image: "img-product.jpg",
     category: "Men",
     rating: "4.8",
     description: "Men's Casual Polo Shirt",
@@ -88,7 +88,7 @@ export const products = [
 
   {
     _id: uuid(),
-    image: "https://example.com/product7.jpg",
+    image: "img-product.jpg",
     category: "Kids",
     rating: "4.6",
     description: "Kids' Denim Overall Dress",
@@ -102,7 +102,7 @@ export const products = [
 
   {
     _id: uuid(),
-    image: "https://example.com/product8.jpg",
+    image: "img-product.jpg",
     category: "Women",
     rating: "4.2",
     description: "Women's V-Neck Floral Blouse",
@@ -116,7 +116,7 @@ export const products = [
 
   {
     _id: uuid(),
-    image: "https://example.com/product9.jpg",
+    image: "img-product.jpg",
     category: "Men",
     rating: "4.5",
     description: "Men's Casual Cargo Shorts",
@@ -130,7 +130,7 @@ export const products = [
 
   {
     _id: uuid(),
-    image: "https://example.com/product10.jpg",
+    image: "img-product.jpg",
     category: "Women",
     rating: "4.4",
     description: "Women's Striped Cotton Shirt",
@@ -144,7 +144,7 @@ export const products = [
 
   {
     _id: uuid(),
-    image: "https://example.com/product11.jpg",
+    image: "img-product.jpg",
     category: "Kids",
     rating: "4.7",
     description: "Kids' Hooded Sweatshirt",
@@ -158,9 +158,9 @@ export const products = [
 
   {
     _id: uuid(),
-    image: "https://example.com/product12.jpg",
+    image: "img-product.jpg",
     category: "Men",
-    rating: "4.1",
+    rating: "1.4",
     description: "Men's Checked Formal Shirt",
     title: "Classic Checks",
     trending: false,
@@ -172,9 +172,9 @@ export const products = [
 
   {
     _id: uuid(),
-    image: "https://example.com/product13.jpg",
+    image: "img-product.jpg",
     category: "Women",
-    rating: "4.6",
+    rating: "2.6",
     description: "Women's Floral Print Skater Dress",
     title: "Floral Fling",
     trending: true,
@@ -186,9 +186,9 @@ export const products = [
 
   {
     _id: uuid(),
-    image: "https://example.com/product14.jpg",
+    image: "img-product.jpg",
     category: "Kids",
-    rating: "4.3",
+    rating: "3.3",
     description: "Kids' Printed Trousers",
     title: "Printed Play",
     trending: false,
@@ -200,7 +200,7 @@ export const products = [
 
   {
     _id: uuid(),
-    image: "https://example.com/product15.jpg",
+    image: "img-product.jpg",
     category: "Men",
     rating: "4.9",
     description: "Men's Sports Performance T-shirt",
@@ -214,9 +214,9 @@ export const products = [
 
   {
     _id: uuid(),
-    image: "https://example.com/product16.jpg",
+    image: "img-product.jpg",
     category: "Women",
-    rating: "4.2",
+    rating: "2",
     description: "Women's Cropped Denim Jacket",
     title: "Denim Chic",
     trending: false,
@@ -228,7 +228,7 @@ export const products = [
 
   {
     _id: uuid(),
-    image: "https://example.com/product17.jpg",
+    image: "img-product.jpg",
     category: "Kids",
     rating: "4.5",
     description: "Kids' Striped Polo Shirt",
@@ -242,9 +242,9 @@ export const products = [
 
   {
     _id: uuid(),
-    image: "https://example.com/product18.jpg",
+    image: "img-product.jpg",
     category: "Men",
-    rating: "4.3",
+    rating: "0",
     description: "Men's Hooded Sweatshirt",
     title: "Casual Comfort",
     trending: true,
@@ -256,7 +256,7 @@ export const products = [
 
   {
     _id: uuid(),
-    image: "https://example.com/product19.jpg",
+    image: "img-product.jpg",
     category: "Women",
     rating: "4.7",
     description: "Women's High-Waisted Culottes",
@@ -269,7 +269,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    image: "https://example.com/product20.jpg",
+    image: "img-product.jpg",
     category: "Kids",
     rating: "4.4",
     description: "Kids' Printed Hoodie",
