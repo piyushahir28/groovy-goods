@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import "./Login.css";
 import { AuthContext } from "../../context/AuthContext";
@@ -7,9 +7,10 @@ import { AuthContext } from "../../context/AuthContext";
 export const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const { loginHandler, token } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const onSubmitHandler = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     loginHandler(formData.email, formData.password);
   };
 
