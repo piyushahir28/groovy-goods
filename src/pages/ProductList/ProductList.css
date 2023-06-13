@@ -28,3 +28,10 @@ label {
   flex-flow: row wrap;
   gap: 2rem;
 }
+
+.nopage {
+  width: 500px;
+  height: 100vh;
+  margin: auto;
+  color: red;
+}

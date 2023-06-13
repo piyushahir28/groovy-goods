@@ -1,3 +1,5 @@
+import { imageListClasses } from "@mui/material";
+
 export const initialState = {
   products: [],
   categories: [],
@@ -66,6 +68,14 @@ export const DataReducer = (state, action) => {
             filters: {
               ...state.filters,
               rating: Number(action.payload),
+            },
+          };
+        } else if (action.filterType === "search") {
+          return {
+            ...state,
+            filters: {
+              ...state.filters,
+              search: action.payload,
             },
           };
         }

@@ -3,6 +3,8 @@ import { Footer } from "../../components/Footer/Footer";
 import "./ProductList.css";
 import { DataContext } from "../../context/DataContext";
 import { ProductCard } from "../../components/ProductCard/ProductCard";
+import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfied";
+import { SentimentDissatisfied } from "@mui/icons-material";
 
 export const ProductList = () => {
   const { state, dispatch } = useContext(DataContext);
@@ -22,6 +24,12 @@ export const ProductList = () => {
       ? filterByRating.sort((a, b) => a.price - b.price)
       : filterByRating.sort((a, b) => b.price - a.price)
     : filterByRating;
+
+  const filterBySearch = state.filters.search
+    ? filterByPrice.filter(({ title }) =>
+        title.toLowerCase().includes(state.filters.search.toLowerCase())
+      )
+    : filterByPrice;
 
   return (
     <>
@@ -109,11 +117,20 @@ export const ProductList = () => {
             />
           </div>
         </div>
-        <div className="product-section">
-          {filterByPrice.map((product) => {
-            return <ProductCard product={product} />;
-          })}
-        </div>
+        {filterBySearch.length === 0 ? (
+          <div className="nopage">
+            <h2>
+              Oops!
+              <SentimentDissatisfied /> No product found.{" "}
+            </h2>
+          </div>
+        ) : (
+          <div className="product-section">
+            {filterBySearch.map((product) => {
+              return <ProductCard product={product} />;
+            })}
+          </div>
+        )}
       </div>
       <Footer />
     </>

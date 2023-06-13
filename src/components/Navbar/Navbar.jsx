@@ -1,12 +1,17 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 import "./Navbar.css";
+import { DataContext } from "../../context/DataContext";
+import { useContext } from "react";
 
 export const Navbar = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { dispatch } = useContext(DataContext);
   return (
     <>
       <div className="nav-bar">
@@ -15,8 +20,25 @@ export const Navbar = () => {
             <b>Groovy Goods</b>
           </div>
         </NavLink>
-        <div className="nav-input">
-          <input type="text" placeholder="Search" />
+        <div
+          className="nav-input"
+          onClick={() => {
+            if (location.pathname !== "/products") {
+              navigate("/products");
+            }
+          }}
+        >
+          <input
+            type="text"
+            placeholder="Search"
+            onChange={(e) => {
+              dispatch({
+                type: "CHANGE_FILTER",
+                payload: e.target.value,
+                filterType: "search",
+              });
+            }}
+          />
         </div>
         <div className="nav-buttons">
           <NavLink className="nav-link" to="/products">
