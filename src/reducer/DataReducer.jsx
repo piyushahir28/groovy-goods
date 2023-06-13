@@ -11,6 +11,17 @@ export const initialState = {
     rating: 5,
     search: "",
   },
+  addressList: [
+    {
+      name: "Piyush Ahir",
+      mobile: 8225863117,
+      city: "Neemuch",
+      pincode: 458441,
+      state: "Madhya Pradesh",
+      street: "21, Laxmi Niwas, Baghana",
+      country: "India",
+    },
+  ],
 };
 
 export const DataReducer = (state, action) => {
