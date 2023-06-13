@@ -1,0 +1,90 @@
+@import "/src/variable.css";
+
+.user-details {
+  width: 700px;
+  height: 100%;
+  margin: auto;
+  border: 1px solid;
+  margin-top: 80px;
+}
+
+.user-nav {
+  display: flex;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+
+.user-nav span {
+  text-align: center;
+  font-size: 1.5rem;
+  flex-grow: 1;
+  border: 1px solid;
+  cursor: pointer;
+}
+
+.profile-details {
+  text-align: center;
+}
+
+.logout-btn {
+  background-color: #f15f5f;
+  color: var(--secondary-color);
+  font-size: 1.5rem;
+  border: none;
+  padding: 0.4rem 1.2rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.display-nav {
+  display: none;
+}
+
+.address-details {
+  padding: 1rem 1rem 2rem 1.5rem;
+  line-height: 0.5;
+}
+
+.address-details p {
+  font-size: 0.9rem;
+}
+
+.add-address-btn {
+  font-size: 1rem;
+  color: aliceblue;
+  background-color: var(--primary-color);
+  padding: 0.4rem 1rem;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.address-card {
+  padding: 1rem;
+}
+
+.card-btn {
+  font-size: 1rem;
+  margin-right: 1rem;
+  padding: 0.2rem 1rem;
+  color: var(--secondary-color);
+  border: none;
+  border-radius: 0.4rem;
+  font-weight: 600;
+}
+
+.btn-edit {
+  background-color: lightgreen;
+}
+
+.btn-delete {
+  background-color: red;
+}
+
+.address-update-form {
+  position: absolute;
+  text-align: center;
+  border: 1px solid;
+  width: 300px;
+  background-color: antiquewhite;
+}

@@ -12,6 +12,7 @@ import { SignUp } from "./pages/SignUP/SignUp";
 import { PrivateRoute } from "./components/PrivateRoute/PrivateRoute";
 import { SingleProduct } from "./pages/SingleProduct/SingleProduct";
 import { TestAPI } from "./mockman";
+import { UserDetails } from "./pages/UserDetails/UserDetails";
 
 function App() {
   return (
@@ -40,6 +41,14 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/singleproduct/:productID" element={<SingleProduct />} />
         <Route path="/mockman" element={<TestAPI />} />
+        <Route
+          path="/userprofile"
+          element={
+            <PrivateRoute>
+              <UserDetails />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </div>
   );
