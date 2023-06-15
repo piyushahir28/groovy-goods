@@ -3,7 +3,6 @@ import { Footer } from "../../components/Footer/Footer";
 import "./ProductList.css";
 import { DataContext } from "../../context/DataContext";
 import { ProductCard } from "../../components/ProductCard/ProductCard";
-import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfied";
 import { SentimentDissatisfied } from "@mui/icons-material";
 
 export const ProductList = () => {
@@ -31,11 +30,23 @@ export const ProductList = () => {
       )
     : filterByPrice;
 
+  const handleFilterClear = () => {
+    dispatch({
+      type: "CLEAR_FILTER",
+      payload: { price: "", rating: 5, category: [], search: "" },
+    });
+  };
+
   return (
     <>
       <div className="product-list">
         <div className="filter-section">
-          <p>Filters</p>
+          <p>
+            Filters{" "}
+            <span className="btn-clear-filter" onClick={handleFilterClear}>
+              Clear
+            </span>
+          </p>
           <div className="indFilter">
             Category
             <br />
@@ -45,7 +56,7 @@ export const ProductList = () => {
                   <input
                     type="checkbox"
                     name={category.categoryName}
-                    id="category"
+                    id={category.categoryName}
                     checked={state.filters.category.includes(
                       category.categoryName
                     )}
@@ -57,7 +68,9 @@ export const ProductList = () => {
                       });
                     }}
                   />
-                  <label htmlFor="category">{category.categoryName}</label>
+                  <label htmlFor={category.categoryName}>
+                    {category.categoryName}
+                  </label>
                   <br />
                 </>
               );
@@ -71,6 +84,7 @@ export const ProductList = () => {
               name="price-filter"
               id="high-to-low"
               value="high-to-low"
+              checked={state.filters.price === "high-to-low"}
               onChange={(e) => {
                 dispatch({
                   type: "CHANGE_FILTER",
@@ -86,6 +100,7 @@ export const ProductList = () => {
               name="price-filter"
               id="low-to-high"
               value="low-to-high"
+              checked={state.filters.price === "low-to-high"}
               onChange={(e) => {
                 dispatch({
                   type: "CHANGE_FILTER",
@@ -107,6 +122,7 @@ export const ProductList = () => {
               min="0"
               max="5"
               step="1"
+              value={state.filters.rating}
               onChange={(e) => {
                 dispatch({
                   type: "CHANGE_FILTER",

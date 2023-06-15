@@ -6,6 +6,7 @@
 }
 
 .filter-section {
+  position: relative;
   width: 180px;
   box-sizing: border-box;
   padding: 0rem 1rem;
@@ -34,4 +35,12 @@ label {
   height: 100vh;
   margin: auto;
   color: red;
+}
+
+.btn-clear-filter {
+  position: absolute;
+  right: 0.3rem;
+  font-weight: 300;
+  font-size: 0.9rem;
+  cursor: pointer;
 }

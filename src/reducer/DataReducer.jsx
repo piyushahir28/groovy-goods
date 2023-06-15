@@ -92,5 +92,17 @@ export const DataReducer = (state, action) => {
         }
       }
       break;
+    case "CLEAR_FILTER": {
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          price: "",
+          rating: 5,
+          category: [],
+          search: "",
+        },
+      };
+    }
   }
 };
