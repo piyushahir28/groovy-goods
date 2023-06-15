@@ -3,6 +3,7 @@ import "./UserDetails.css";
 
 import { AuthContext } from "../../context/AuthContext";
 import { DataContext } from "../../context/DataContext";
+import { Opacity } from "@mui/icons-material";
 
 export const UserDetails = () => {
   const { currUser, logoutHandler } = useContext(AuthContext);
@@ -10,12 +11,36 @@ export const UserDetails = () => {
   const [displayUserProfile, setDisplayUserProfile] = useState("");
   const [displayUSerAddress, setDisplayUserAddress] = useState("display-nav");
   const [displayOrderHistory, setDisplayOrderHistory] = useState("display-nav");
+  const [displayAddressForm, setDisplayAddressForm] =
+    useState("displayAddress");
   return (
     <>
-      {/* <div className="address-update-form">
-        <h3>Piyush Ahir</h3>
-        <p>Neemuch Madhya Pradesh</p>
-      </div> */}
+      <div className={`address-update-form ${displayAddressForm}`}>
+        <p>Add New Address</p>
+        <form action="">
+          <div className="address-form">
+            <input type="text" name="userName" placeholder="Name" required />
+            <input type="text" name="street" placeholder="Street" required />
+            <input type="text" name="city" placeholder="City" required />
+            <input type="text" name="zipcode" placeholder="ZipCode" required />
+            <input type="text" name="state" placeholder="State" required />
+            <input type="text" name="counrty" placeholder="Country" required />
+            <input type="tel" name="mobile" placeholder="Mobile" required />
+            <div className="address-btn">
+              <button>Dummy</button>
+              <button>Reset</button>
+              <button
+                onClick={() => {
+                  setDisplayAddressForm("");
+                }}
+              >
+                Cancel
+              </button>
+              <button type="submit">Add</button>
+            </div>
+          </div>
+        </form>
+      </div>
       <div className="user-details">
         <div className="user-nav">
           <span
@@ -60,7 +85,14 @@ export const UserDetails = () => {
           <br />
         </div>
         <div className={`address-details ${displayUSerAddress}`}>
-          <button className="add-address-btn">New Address</button>
+          <button
+            onClick={() => {
+              setDisplayAddressForm("");
+            }}
+            className="add-address-btn"
+          >
+            New Address
+          </button>
           {state.addressList.map((address) => {
             const { name, mobile, state, street, country, city, pincode } =
               address;
