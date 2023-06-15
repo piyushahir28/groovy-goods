@@ -7,11 +7,13 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import "./Navbar.css";
 import { DataContext } from "../../context/DataContext";
 import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 export const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { dispatch } = useContext(DataContext);
+  const { token } = useContext(AuthContext);
   return (
     <>
       <div className="nav-bar">
@@ -59,7 +61,10 @@ export const Navbar = () => {
             <p>0</p>
           </div>
           <div className="nav-btn icons">
-            <NavLink className="nav-link" to="/login">
+            <NavLink
+              className="nav-link"
+              to={token ? "/userprofile" : "/login"}
+            >
               <AccountCircleIcon className="user-l" />
             </NavLink>
           </div>

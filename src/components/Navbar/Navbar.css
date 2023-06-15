@@ -15,6 +15,7 @@
   align-items: center;
   color: var(--primary-color);
   row-gap: 0.3rem;
+  background-color: white;
 }
 
 .nav-link {

@@ -27,8 +27,7 @@ export const AuthProvider = ({ children }) => {
         );
         setCurrUser(foundUser);
         setToken(encodedToken);
-        console.log("Great Success");
-        navigate(location?.state?.from?.pathname || "/");
+        navigate(location?.state?.from?.pathname || "/userprofile");
       }
     } catch (error) {
       console.log(error);
@@ -39,6 +38,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("loginItems");
     setToken(null);
     setCurrUser(null);
+    navigate("/");
   };
 
   const signupHandler = async (email, password, name) => {
