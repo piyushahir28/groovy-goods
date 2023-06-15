@@ -90,6 +90,7 @@ export const addToWishList = async (product, encodedToken) => {
     { product },
     { headers: { authorization: encodedToken } }
   );
+  console.log(response);
   return response.data.wishlist;
 };
 

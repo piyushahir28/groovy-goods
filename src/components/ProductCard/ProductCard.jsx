@@ -1,11 +1,19 @@
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import StarIcon from "@mui/icons-material/Star";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
+import { DataContext } from "../../context/DataContext";
+
 import "./ProductCard.css";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { addToWishList } from "../../Services/Service";
+import { AuthContext } from "../../context/AuthContext";
 
 export const ProductCard = ({ product }) => {
+  const { token } = useContext(AuthContext);
+  const { state, dispatch } = useContext(DataContext);
   const navigate = useNavigate();
   const {
     _id,
@@ -31,7 +39,22 @@ export const ProductCard = ({ product }) => {
         />
         {trending && <span className="top-left">Trending</span>}
         <span className="wishlist-icon">
-          <FavoriteBorderIcon />
+          {token ? (
+            <FavoriteIcon className="wished-item" />
+          ) : (
+            <FavoriteBorderIcon
+              onClick={
+                token
+                  ? () => {
+                      const wishListData = addToWishList(product, token);
+                    }
+                  : () => {
+                      navigate("/login");
+                    }
+              }
+              className="icon-wishlist"
+            />
+          )}
         </span>
         <span className="rating-icon">
           <StarIcon className="material-icon" />

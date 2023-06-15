@@ -30,6 +30,15 @@
   background-color: skyblue;
   padding: 2px 4px 0px 4px;
   border-radius: 0 5px;
+  cursor: pointer;
+}
+
+.icon-wishlist:hover {
+  color: red;
+}
+
+.wished-item {
+  color: red;
 }
 
 .rating-icon {

@@ -92,16 +92,24 @@ export const DataReducer = (state, action) => {
         }
       }
       break;
-    case "CLEAR_FILTER": {
+    case "CLEAR_FILTER":
+      {
+        return {
+          ...state,
+          filters: {
+            ...state.filters,
+            price: "",
+            rating: 5,
+            category: [],
+            search: "",
+          },
+        };
+      }
+      break;
+    case "UPDATE_WISHLIST": {
       return {
         ...state,
-        filters: {
-          ...state.filters,
-          price: "",
-          rating: 5,
-          category: [],
-          search: "",
-        },
+        wishlist: action.payload,
       };
     }
   }

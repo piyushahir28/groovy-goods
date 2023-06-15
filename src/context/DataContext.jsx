@@ -1,11 +1,16 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 import { DataReducer, initialState } from "../reducer/DataReducer";
-import { getAllCategories, getAllProducts } from "../Services/Service";
 import { AuthContext } from "./AuthContext";
+import {
+  getAllCategories,
+  getAllProducts,
+  getWishList,
+} from "../Services/Service";
 
 export const DataContext = createContext();
 
 export const ContextProvider = ({ children }) => {
+  const { token } = useContext(AuthContext);
   const [state, dispatch] = useReducer(DataReducer, initialState);
 
   const initialDataFetch = async () => {
@@ -28,11 +33,18 @@ export const ContextProvider = ({ children }) => {
     } catch (error) {
       console.log(error);
     }
+    if (token) {
+      const wishListData = await getWishList(token);
+      dispatch({
+        type: "UPDATE_WISHLIST",
+        payload: { wishlist: wishListData },
+      });
+    }
   };
 
   useEffect(() => {
     initialDataFetch();
-  }, []);
+  }, [token]);
 
   return (
     <DataContext.Provider value={{ state, dispatch }}>
