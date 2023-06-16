@@ -1,14 +1,14 @@
-import { useRef } from "react";
 import { useContext } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import StarRateIcon from "@mui/icons-material/StarRate";
 
 import "./SingleProduct.css";
 import { DataContext } from "../../context/DataContext";
-import { useParams } from "react-router-dom";
-import { Footer } from "../../components/Footer/Footer";
-import { getSingleProduct } from "../../Services/Service";
+import { AuthContext } from "../../context/AuthContext";
 
 export const SingleProduct = () => {
+  const { token } = useContext(AuthContext);
+  const navigate = useNavigate();
   const { productID } = useParams();
   const { state } = useContext(DataContext);
   const singleProduct = state.products.find((el) => el._id === productID) || {};
@@ -68,8 +68,30 @@ export const SingleProduct = () => {
               </span>
             </p>
           </div>
-          <button className="prd-button cart-btnn">Add to cart</button>
-          <button className="prd-button">Add to wishlist</button>
+          <button
+            onClick={
+              token
+                ? () => {}
+                : () => {
+                    navigate("/login");
+                  }
+            }
+            className="prd-button cart-btnn"
+          >
+            Add to cart
+          </button>
+          <button
+            onClick={
+              token
+                ? () => {}
+                : () => {
+                    navigate("/login");
+                  }
+            }
+            className="prd-button"
+          >
+            Add to wishlist
+          </button>
         </div>
       </div>
     </div>

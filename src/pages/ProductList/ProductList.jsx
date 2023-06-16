@@ -1,9 +1,10 @@
 import { useContext } from "react";
-import { Footer } from "../../components/Footer/Footer";
+import { SentimentDissatisfied } from "@mui/icons-material";
+
 import "./ProductList.css";
+import { Footer } from "../../components/Footer/Footer";
 import { DataContext } from "../../context/DataContext";
 import { ProductCard } from "../../components/ProductCard/ProductCard";
-import { SentimentDissatisfied } from "@mui/icons-material";
 
 export const ProductList = () => {
   const { state, dispatch } = useContext(DataContext);

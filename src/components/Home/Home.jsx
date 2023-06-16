@@ -1,12 +1,8 @@
-import { useState } from "react";
-import { useEffect } from "react";
-
-import axios from "axios";
-
-import { Footer } from "../Footer/Footer";
-import "./Home.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useContext } from "react";
+
+import "./Home.css";
+import { Footer } from "../Footer/Footer";
 import { DataContext } from "../../context/DataContext";
 
 export const Home = () => {

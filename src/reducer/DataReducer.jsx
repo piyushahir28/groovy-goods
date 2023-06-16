@@ -1,5 +1,3 @@
-import { imageListClasses } from "@mui/material";
-
 export const initialState = {
   products: [],
   categories: [],

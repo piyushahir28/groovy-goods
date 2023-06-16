@@ -1,15 +1,14 @@
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import StarIcon from "@mui/icons-material/Star";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
-import { DataContext } from "../../context/DataContext";
-
 import "./ProductCard.css";
-import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
 import { addToWishList } from "../../Services/Service";
 import { AuthContext } from "../../context/AuthContext";
+import { DataContext } from "../../context/DataContext";
 
 export const ProductCard = ({ product }) => {
   const { token } = useContext(AuthContext);
@@ -70,7 +69,16 @@ export const ProductCard = ({ product }) => {
           %OFF
         </span>
         <br />
-        <button className="cart-btn">
+        <button
+          onClick={
+            token
+              ? () => {}
+              : () => {
+                  navigate("/login");
+                }
+          }
+          className="cart-btn"
+        >
           <ShoppingCartIcon fontSize="small" />
           {"    "} Add to cart
         </button>
