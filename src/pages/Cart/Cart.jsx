@@ -8,10 +8,13 @@ export const Cart = () => {
   const { state } = useContext(DataContext);
   return (
     <>
-      <div className="cart-section">
-        {state?.cart?.map((product) => {
-          return <ProductCard product={product} />;
-        })}
+      <div className="cart">
+        <div className="cart-section">
+          {state?.cart?.map((product) => {
+            return <ProductCard product={product} cart />;
+          })}
+        </div>
+        <div className="checkout-section"></div>
       </div>
     </>
   );
