@@ -12,7 +12,9 @@ import { SignUp } from "./pages/SignUP/SignUp";
 import { PrivateRoute } from "./components/PrivateRoute/PrivateRoute";
 import { SingleProduct } from "./pages/SingleProduct/SingleProduct";
 import { TestAPI } from "./mockman";
-import { UserDetails } from "./pages/UserDetails/UserDetails";
+import { UserAddress } from "./pages/UserDetails/UserAddress/UserAddress";
+import { UserOrder } from "./pages/UserDetails/UserOrder/UserOrder";
+import { UserProfile } from "./pages/UserDetails/UserProfile/UserProfile";
 
 function App() {
   return (
@@ -42,10 +44,26 @@ function App() {
         <Route path="/singleproduct/:productID" element={<SingleProduct />} />
         <Route path="/mockman" element={<TestAPI />} />
         <Route
-          path="/userprofile"
+          path="/user/profile"
           element={
             <PrivateRoute>
-              <UserDetails />
+              <UserProfile />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/user/address"
+          element={
+            <PrivateRoute>
+              <UserAddress />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/user/order"
+          element={
+            <PrivateRoute>
+              <UserOrder />
             </PrivateRoute>
           }
         />
