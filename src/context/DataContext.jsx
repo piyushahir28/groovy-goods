@@ -34,13 +34,13 @@ export const ContextProvider = ({ children }) => {
     } catch (error) {
       console.log(error);
     }
-    if (token) {
-      const wishListData = await getWishList(token);
-      dispatch({
-        type: "UPDATE_WISHLIST",
-        payload: { wishlist: wishListData },
-      });
-    }
+    // if (token) {
+    //   const wishListData = await getWishList(token);
+    //   dispatch({
+    //     type: "UPDATE_WISHLIST",
+    //     payload: { wishlist: wishListData },
+    //   });
+    // }
   };
 
   useEffect(() => {

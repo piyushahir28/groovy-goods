@@ -38,14 +38,15 @@ export const ProductCard = ({ product }) => {
         />
         {trending && <span className="top-left">Trending</span>}
         <span className="wishlist-icon">
-          {token ? (
+          {token && state?.wishlist?.find((prd) => prd._id === _id) ? (
             <FavoriteIcon className="wished-item" />
           ) : (
             <FavoriteBorderIcon
               onClick={
                 token
                   ? () => {
-                      const wishListData = addToWishList(product, token);
+                      const wished = addToWishList(product, token);
+                      console.log(wished);
                     }
                   : () => {
                       navigate("/login");

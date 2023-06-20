@@ -74,7 +74,7 @@
   padding-top: 0.3rem;
 }
 
-.icons p {
+.nav-data {
   font-size: 0.7rem;
   position: absolute;
   top: -0.9rem;
@@ -104,7 +104,7 @@
   .nav-buttons {
     width: 350px;
   }
-  .icons p {
+  .nav-data {
     font-size: 0.8rem;
     position: absolute;
     top: -0.7rem;

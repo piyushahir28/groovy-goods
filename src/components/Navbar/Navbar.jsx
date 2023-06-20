@@ -13,6 +13,8 @@ export const Navbar = () => {
   const navigate = useNavigate();
   const { dispatch } = useContext(DataContext);
   const { token } = useContext(AuthContext);
+  const { state } = useContext(DataContext);
+
   return (
     <>
       <div className="nav-bar">
@@ -51,13 +53,17 @@ export const Navbar = () => {
             <NavLink className="nav-link" to="/wishlist">
               <FavoriteBorderIcon className="user-l" />
             </NavLink>
-            <p>0</p>
+            {token && state.wishlist.length ? (
+              <p className="nav-data">{state.wishlist.length}</p>
+            ) : null}
           </div>
           <div className="nav-btn icons">
             <NavLink className="nav-link" to="/cart">
               <ShoppingBagIcon className="user-l" />
             </NavLink>
-            <p>0</p>
+            {token && state.cart.length ? (
+              <p className="nav-data">{state.cart.length}</p>
+            ) : null}
           </div>
           <div className="nav-btn icons">
             <NavLink
