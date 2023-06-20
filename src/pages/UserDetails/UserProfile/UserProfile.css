@@ -1,0 +1,23 @@
+@import "/src/variable.css";
+
+.user-details {
+  width: 700px;
+  height: 100%;
+  margin: auto;
+  border: 1px solid;
+  margin-top: 80px;
+}
+
+.profile-details {
+  text-align: center;
+}
+
+.logout-btn {
+  background-color: #f15f5f;
+  color: var(--secondary-color);
+  font-size: 1.5rem;
+  border: none;
+  padding: 0.4rem 1.2rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}
