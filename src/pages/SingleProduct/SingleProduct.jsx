@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import StarRateIcon from "@mui/icons-material/StarRate";
 
 import "./SingleProduct.css";
+import { addToCart, addToWishList } from "../../Services/Service";
 import { DataContext } from "../../context/DataContext";
 import { AuthContext } from "../../context/AuthContext";
 
@@ -10,7 +11,7 @@ export const SingleProduct = () => {
   const { token } = useContext(AuthContext);
   const navigate = useNavigate();
   const { productID } = useParams();
-  const { state } = useContext(DataContext);
+  const { state, dispatch } = useContext(DataContext);
   const singleProduct = state.products.find((el) => el._id === productID) || {};
   const {
     _id,
@@ -25,8 +26,13 @@ export const SingleProduct = () => {
     reviews,
     in_stock,
   } = singleProduct;
-  console.log(singleProduct);
-
+  const addToCartHandler = async () => {
+    const response = await addToCart(singleProduct, token);
+    dispatch({
+      type: "ADD_TO_CART",
+      payload: response.data.cart,
+    });
+  };
   return (
     <div className="main-div">
       <div className="single-container">
@@ -68,18 +74,27 @@ export const SingleProduct = () => {
               </span>
             </p>
           </div>
-          <button
-            onClick={
-              token
-                ? () => {}
-                : () => {
-                    navigate("/login");
-                  }
-            }
-            className="prd-button cart-btnn"
-          >
-            Add to cart
-          </button>
+          {token && state?.cart.find((product) => product._id === _id) ? (
+            <button
+              className="prd-button cart-btnn"
+              onClick={() => navigate("/cart")}
+            >
+              Go to Cart
+            </button>
+          ) : (
+            <button
+              onClick={
+                token
+                  ? () => addToCartHandler()
+                  : () => {
+                      navigate("/login");
+                    }
+              }
+              className="prd-button cart-btnn"
+            >
+              Add to cart
+            </button>
+          )}
           <button
             onClick={
               token

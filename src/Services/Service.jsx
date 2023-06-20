@@ -56,7 +56,7 @@ export const addToCart = async (product, encodedToken) => {
     { product },
     { headers: { authorization: encodedToken } }
   );
-  return response.data.cart;
+  return response;
 };
 
 export const removeFromCart = async (productID, encodedToken) => {

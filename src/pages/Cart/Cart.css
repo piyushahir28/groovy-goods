@@ -1,1 +1,8 @@
 @import "/src/variable.css";
+
+.cart-section {
+  margin: 2rem;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 2rem;
+}

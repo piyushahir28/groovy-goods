@@ -6,7 +6,7 @@ import StarIcon from "@mui/icons-material/Star";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 import "./ProductCard.css";
-import { addToWishList } from "../../Services/Service";
+import { addToCart, addToWishList } from "../../Services/Service";
 import { AuthContext } from "../../context/AuthContext";
 import { DataContext } from "../../context/DataContext";
 
@@ -27,6 +27,15 @@ export const ProductCard = ({ product }) => {
     reviews,
     in_stock,
   } = product;
+
+  const addToCartHandler = async () => {
+    const response = await addToCart(product, token);
+    dispatch({
+      type: "ADD_TO_CART",
+      payload: response.data.cart,
+    });
+  };
+
   return (
     <>
       <div className="product-card">
@@ -70,19 +79,26 @@ export const ProductCard = ({ product }) => {
           %OFF
         </span>
         <br />
-        <button
-          onClick={
-            token
-              ? () => {}
-              : () => {
-                  navigate("/login");
-                }
-          }
-          className="cart-btn"
-        >
-          <ShoppingCartIcon fontSize="small" />
-          {"    "} Add to cart
-        </button>
+        {token && state?.cart.find((product) => product._id === _id) ? (
+          <button className="cart-btn" onClick={() => navigate("/cart")}>
+            <ShoppingCartIcon fontSize="small" />
+            Go to Cart
+          </button>
+        ) : (
+          <button
+            onClick={
+              token
+                ? () => addToCartHandler()
+                : () => {
+                    navigate("/login");
+                  }
+            }
+            className="cart-btn"
+          >
+            <ShoppingCartIcon fontSize="small" />
+            Add to cart
+          </button>
+        )}
       </div>
     </>
   );

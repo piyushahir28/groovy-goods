@@ -104,10 +104,25 @@ export const DataReducer = (state, action) => {
         };
       }
       break;
-    case "UPDATE_WISHLIST": {
+    case "ADD_TO_CART":
+      {
+        return {
+          ...state,
+          cart: [...action.payload],
+        };
+      }
+      break;
+    case "UPDATE_WISHLIST":
+      {
+        return {
+          ...state,
+          wishlist: action.payload,
+        };
+      }
+      break;
+    default: {
       return {
         ...state,
-        wishlist: action.payload,
       };
     }
   }
