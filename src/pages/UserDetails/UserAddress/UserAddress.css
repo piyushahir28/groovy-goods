@@ -1,0 +1,50 @@
+@import "/src/variable.css";
+
+.user-details {
+  width: 700px;
+  height: 100%;
+  margin: auto;
+  border: 1px solid;
+  margin-top: 80px;
+}
+
+.address-details {
+  padding: 1rem 1rem 2rem 1.5rem;
+  line-height: 0.5;
+}
+
+.address-details p {
+  font-size: 0.9rem;
+}
+
+.add-address-btn {
+  font-size: 1rem;
+  color: aliceblue;
+  background-color: var(--primary-color);
+  padding: 0.4rem 1rem;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.address-card {
+  padding: 1rem;
+}
+
+.card-btn {
+  font-size: 1rem;
+  margin-right: 1rem;
+  padding: 0.2rem 1rem;
+  color: var(--secondary-color);
+  border: none;
+  border-radius: 0.4rem;
+  font-weight: 600;
+}
+
+.btn-edit {
+  background-color: lightgreen;
+}
+
+.btn-delete {
+  background-color: red;
+}
