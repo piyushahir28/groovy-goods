@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }) => {
         );
         setCurrUser(foundUser);
         setToken(encodedToken);
-        navigate(location?.state?.from?.pathname || "/userprofile");
+        navigate(location?.state?.from?.pathname || "/user/profile");
       }
     } catch (error) {
       console.log(error);

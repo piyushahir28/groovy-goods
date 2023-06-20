@@ -18,7 +18,7 @@ export const SignUp = () => {
   };
 
   if (token) {
-    navigate("/userprofile");
+    navigate("/user/profile");
   }
 
   return (

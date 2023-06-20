@@ -68,7 +68,7 @@ export const Navbar = () => {
           <div className="nav-btn icons">
             <NavLink
               className="nav-link"
-              to={token ? "/userprofile" : "/login"}
+              to={token ? "/user/profile" : "/login"}
             >
               <AccountCircleIcon className="user-l" />
             </NavLink>
