@@ -18,7 +18,7 @@ import { DataContext } from "../../context/DataContext";
 
 export const ProductCard = ({ product, cart }) => {
   const { token } = useContext(AuthContext);
-  const { state, dispatch } = useContext(DataContext);
+  const { state, dispatch, ToastHandler } = useContext(DataContext);
   const navigate = useNavigate();
   const {
     _id,
@@ -41,6 +41,7 @@ export const ProductCard = ({ product, cart }) => {
       type: "ADD_TO_CART",
       payload: response.data.cart,
     });
+    ToastHandler(`${title} added to cart.`, "success");
   };
 
   const addToWishListHandler = async () => {
@@ -49,6 +50,7 @@ export const ProductCard = ({ product, cart }) => {
       type: "ADD_TO_WISHLIST",
       payload: response,
     });
+    ToastHandler(`${title} added to wishlist.`, "success");
   };
 
   const removeFromCartHandler = async () => {
@@ -58,6 +60,7 @@ export const ProductCard = ({ product, cart }) => {
       type: "ADD_TO_CART",
       payload: response,
     });
+    ToastHandler(`${title} removed from cart.`, "success");
   };
 
   const removeFromWishlistHandler = async () => {
@@ -66,7 +69,7 @@ export const ProductCard = ({ product, cart }) => {
       type: "ADD_TO_WISHLIST",
       payload: response,
     });
-    console.log(state.wishlist);
+    ToastHandler(`${title} removed from wishlist.`, "success");
   };
 
   const handleCartQty = async (actionType) => {

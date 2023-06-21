@@ -3,7 +3,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import StarRateIcon from "@mui/icons-material/StarRate";
 
 import "./SingleProduct.css";
-import { addToCart, addToWishList } from "../../Services/Service";
+import {
+  addToCart,
+  addToWishList,
+  removeFromWishList,
+} from "../../Services/Service";
 import { DataContext } from "../../context/DataContext";
 import { AuthContext } from "../../context/AuthContext";
 
@@ -11,7 +15,7 @@ export const SingleProduct = () => {
   const { token } = useContext(AuthContext);
   const navigate = useNavigate();
   const { productID } = useParams();
-  const { state, dispatch } = useContext(DataContext);
+  const { state, dispatch, ToastHandler } = useContext(DataContext);
   const singleProduct = state.products.find((el) => el._id === productID) || {};
   const {
     _id,
@@ -32,6 +36,23 @@ export const SingleProduct = () => {
       type: "ADD_TO_CART",
       payload: response.data.cart,
     });
+    ToastHandler(`${title} added to cart.`, "success");
+  };
+  const addToWishListHandler = async () => {
+    const response = await addToWishList(singleProduct, token);
+    dispatch({
+      type: "ADD_TO_WISHLIST",
+      payload: response,
+    });
+    ToastHandler(`${title} added to wishlist.`, "success");
+  };
+  const removeFromWishlistHandler = async () => {
+    const response = await removeFromWishList(_id, token);
+    dispatch({
+      type: "ADD_TO_WISHLIST",
+      payload: response,
+    });
+    ToastHandler(`${title} removed from wishlist.`, "success");
   };
   return (
     <div className="main-div">
@@ -95,18 +116,29 @@ export const SingleProduct = () => {
               Add to cart
             </button>
           )}
-          <button
-            onClick={
-              token
-                ? () => {}
-                : () => {
-                    navigate("/login");
-                  }
-            }
-            className="prd-button"
-          >
-            Add to wishlist
-          </button>
+          {token && state?.wishlist?.find((product) => product._id === _id) ? (
+            <button
+              className="prd-button"
+              onClick={() => removeFromWishlistHandler()}
+            >
+              Remove from wishlist
+            </button>
+          ) : (
+            <button
+              onClick={
+                token
+                  ? () => {
+                      addToWishListHandler();
+                    }
+                  : () => {
+                      navigate("/login");
+                    }
+              }
+              className="prd-button"
+            >
+              Add to wishlist
+            </button>
+          )}
         </div>
       </div>
     </div>
