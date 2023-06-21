@@ -13,3 +13,28 @@
   flex-flow: column;
   gap: 2rem;
 }
+
+.none-container {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 1rem;
+  width: 500px;
+  margin: auto;
+}
+
+.none-container button {
+  margin-top: -1rem;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+.none-container button:hover {
+  background-color: var(--secondary-color);
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+}
