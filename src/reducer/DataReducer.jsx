@@ -112,7 +112,7 @@ export const DataReducer = (state, action) => {
         };
       }
       break;
-    case "UPDATE_WISHLIST":
+    case "ADD_TO_WISHLIST":
       {
         return {
           ...state,

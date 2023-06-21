@@ -6,7 +6,13 @@ import StarIcon from "@mui/icons-material/Star";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 import "./ProductCard.css";
-import { addToCart, addToWishList, incDecCart } from "../../Services/Service";
+import {
+  addToCart,
+  addToWishList,
+  incDecCart,
+  removeFromCart,
+  removeFromWishList,
+} from "../../Services/Service";
 import { AuthContext } from "../../context/AuthContext";
 import { DataContext } from "../../context/DataContext";
 
@@ -37,11 +43,31 @@ export const ProductCard = ({ product, cart }) => {
     });
   };
 
-  const addToWishListHandler = async () => {};
+  const addToWishListHandler = async () => {
+    const response = await addToWishList(product, token);
+    dispatch({
+      type: "ADD_TO_WISHLIST",
+      payload: response,
+    });
+  };
 
-  const removeFromCartHandler = async () => {};
+  const removeFromCartHandler = async () => {
+    const response = await removeFromCart(_id, token);
+    console.log(response);
+    dispatch({
+      type: "ADD_TO_CART",
+      payload: response,
+    });
+  };
 
-  const removeFromWishlistHandler = async () => {};
+  const removeFromWishlistHandler = async () => {
+    const response = await removeFromWishList(_id, token);
+    dispatch({
+      type: "ADD_TO_WISHLIST",
+      payload: response,
+    });
+    console.log(state.wishlist);
+  };
 
   const handleCartQty = async (actionType) => {
     const response = await incDecCart(_id, actionType, token);
@@ -66,7 +92,7 @@ export const ProductCard = ({ product, cart }) => {
             <StarIcon className="material-icon" />
             {rating}
           </span>
-          <div>
+          <div className="cart-details">
             <p className="cart-product-title">
               <b>{title}</b>
             </p>
@@ -74,6 +100,7 @@ export const ProductCard = ({ product, cart }) => {
             <span className="original-price cart-product-price">
               ${original_price}
             </span>
+            <br />
             <br />
             <div className="cart-qty">
               <button onClick={() => handleCartQty("decrement")}>-</button>
@@ -83,7 +110,7 @@ export const ProductCard = ({ product, cart }) => {
             <br />
             <button
               className="cart-cart-btn"
-              onClick={() => removeFromCartHandler}
+              onClick={() => removeFromCartHandler()}
             >
               Remove from Cart
             </button>
@@ -126,14 +153,16 @@ export const ProductCard = ({ product, cart }) => {
         {trending && <span className="top-left">Trending</span>}
         <span className="wishlist-icon">
           {token && state?.wishlist?.find((prd) => prd._id === _id) ? (
-            <FavoriteIcon className="wished-item" />
+            <FavoriteIcon
+              onClick={() => removeFromWishlistHandler()}
+              className="wished-item"
+            />
           ) : (
             <FavoriteBorderIcon
               onClick={
                 token
                   ? () => {
-                      const wished = addToWishList(product, token);
-                      console.log(wished);
+                      addToWishListHandler();
                     }
                   : () => {
                       navigate("/login");
