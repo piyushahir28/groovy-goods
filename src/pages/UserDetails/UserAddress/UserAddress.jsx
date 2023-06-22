@@ -7,14 +7,21 @@ import { AddressModal } from "../../../components/Address/AddressModal";
 
 export const UserAddress = () => {
   const [showModal, setShowModal] = useState(false);
-  const [addAddress, setAddAddress] = useState(true);
-  const { state } = useContext(DataContext);
+  const { state, dispatch, ToastHAndler } = useContext(DataContext);
+  const deleteAddressHAndler = (addressID) => {
+    console.log(addressID);
+    dispatch({
+      type: "DELETE_ADDRESS",
+      payload: addressID,
+    });
+  };
+
   return (
     <>
       <AddressModal
         onClose={() => setShowModal(false)}
         show={showModal}
-        addAddress={addAddress}
+        addAddress
       />
       <div className="user-details">
         <UserNav />
@@ -23,28 +30,47 @@ export const UserAddress = () => {
             onClick={() => setShowModal(true)}
             className="add-address-btn"
           >
-            New Address
+            Add New Address
           </button>
-          {state.addressList.map((address) => {
-            const { name, mobile, state, street, country, city, pincode } =
-              address;
-            return (
-              <div className="address-card">
-                <h3>{name}</h3>
-                <p>{mobile}</p>
-                <p>
-                  {street}, {city},
-                </p>
-                <p>
-                  {state}, {country}, {pincode}
-                </p>
-                <div>
-                  <button className="btn-edit card-btn">Edit</button>
-                  <button className="btn-delete card-btn">Delete</button>
+          {state.addressList.length > 0 ? (
+            state.addressList.map((address) => {
+              const {
+                id,
+                name,
+                mobile,
+                state,
+                street,
+                country,
+                city,
+                pincode,
+              } = address;
+              return (
+                <div className="address-card">
+                  <h3>{name}</h3>
+                  <p>{mobile}</p>
+                  <p>
+                    {street}, {city},
+                  </p>
+                  <p>
+                    {state}, {country}, {pincode}
+                  </p>
+                  <div>
+                    <button className="btn-edit card-btn">Edit</button>
+                    <button
+                      className="btn-delete card-btn"
+                      onClick={() => deleteAddressHAndler(id)}
+                    >
+                      Delete
+                    </button>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })
+          ) : (
+            <div className="profile-details">
+              <h3>No address found</h3>
+            </div>
+          )}
         </div>
       </div>
     </>

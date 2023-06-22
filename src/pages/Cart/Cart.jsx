@@ -6,13 +6,9 @@ import { ProductCard } from "../../components/ProductCard/ProductCard";
 import { useNavigate } from "react-router-dom";
 
 export const Cart = () => {
-  const { state } = useContext(DataContext);
-  const itemQuantity = state?.cart?.reduce((acc, { qty }) => acc + qty, 0);
-  const discountPrice = itemQuantity * 50;
-  const itemPrice = state?.cart?.reduce(
-    (acc, { price, qty }) => acc + price * qty,
-    0
-  );
+  const { state, itemQuantity, itemPrice, discountPrice } =
+    useContext(DataContext);
+
   const navigate = useNavigate();
   if (state?.cart?.length === 0) {
     return (

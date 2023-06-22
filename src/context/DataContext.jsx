@@ -10,6 +10,12 @@ export const DataContext = createContext();
 export const ContextProvider = ({ children }) => {
   const { token } = useContext(AuthContext);
   const [state, dispatch] = useReducer(DataReducer, initialState);
+  const itemQuantity = state?.cart?.reduce((acc, { qty }) => acc + qty, 0);
+  const discountPrice = itemQuantity * 50;
+  const itemPrice = state?.cart?.reduce(
+    (acc, { price, qty }) => acc + price * qty,
+    0
+  );
 
   const ToastHandler = (message, type) => {
     if (type === "success") {
@@ -87,7 +93,16 @@ export const ContextProvider = ({ children }) => {
   }, [token]);
 
   return (
-    <DataContext.Provider value={{ state, dispatch, ToastHandler }}>
+    <DataContext.Provider
+      value={{
+        state,
+        dispatch,
+        itemQuantity,
+        itemPrice,
+        discountPrice,
+        ToastHandler,
+      }}
+    >
       {children}
     </DataContext.Provider>
   );
