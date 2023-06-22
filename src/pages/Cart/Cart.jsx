@@ -50,13 +50,12 @@ export const Cart = () => {
               <hr />
               <span>Total</span>
               <span className="price-right">
-                {itemPrice - discountPrice + 69}
+                ${itemPrice - discountPrice + 69}
               </span>
               <hr />
             </p>
           </div>
-
-          <button>Checkout</button>
+          <button onClick={() => navigate("/checkout")}>Checkout</button>
         </div>
         <div className="cart-section">
           {state?.cart?.map((product) => {

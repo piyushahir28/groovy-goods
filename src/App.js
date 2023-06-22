@@ -17,6 +17,7 @@ import { TestAPI } from "./mockman";
 import { UserAddress } from "./pages/UserDetails/UserAddress/UserAddress";
 import { UserOrder } from "./pages/UserDetails/UserOrder/UserOrder";
 import { UserProfile } from "./pages/UserDetails/UserProfile/UserProfile";
+import { Checkout } from "./pages/Checkout/Checkout";
 
 function App() {
   return (
@@ -66,6 +67,14 @@ function App() {
           element={
             <PrivateRoute>
               <UserOrder />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/checkout"
+          element={
+            <PrivateRoute>
+              <Checkout />
             </PrivateRoute>
           }
         />
