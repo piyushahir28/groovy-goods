@@ -7,22 +7,19 @@ import { AddressModal } from "../../../components/Address/AddressModal";
 
 export const UserAddress = () => {
   const [showModal, setShowModal] = useState(false);
-  const { state, dispatch, ToastHAndler } = useContext(DataContext);
+  const { state, dispatch, ToastHandler } = useContext(DataContext);
   const deleteAddressHAndler = (addressID) => {
     console.log(addressID);
     dispatch({
       type: "DELETE_ADDRESS",
       payload: addressID,
     });
+    ToastHandler("Address deleted", "success");
   };
 
   return (
     <>
-      <AddressModal
-        onClose={() => setShowModal(false)}
-        show={showModal}
-        addAddress
-      />
+      <AddressModal onClose={() => setShowModal(false)} show={showModal} />
       <div className="user-details">
         <UserNav />
         <div className="address-details">
