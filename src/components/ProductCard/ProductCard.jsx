@@ -16,7 +16,7 @@ import {
 import { AuthContext } from "../../context/AuthContext";
 import { DataContext } from "../../context/DataContext";
 
-export const ProductCard = ({ product, cart }) => {
+export const ProductCard = ({ product, cart, wishlistCard }) => {
   const { token } = useContext(AuthContext);
   const { state, dispatch, ToastHandler } = useContext(DataContext);
   const navigate = useNavigate();
@@ -78,6 +78,11 @@ export const ProductCard = ({ product, cart }) => {
       type: "ADD_TO_CART",
       payload: response,
     });
+    if (actionType === "increment") {
+      ToastHandler(`Added one more ${title} to cart.`, "success");
+    } else {
+      ToastHandler(`Removed one ${title} from cart.`, "success");
+    }
   };
 
   if (cart) {
@@ -190,10 +195,19 @@ export const ProductCard = ({ product, cart }) => {
         </span>
         <br />
         {token && state?.cart.find((product) => product._id === _id) ? (
-          <button className="cart-btn" onClick={() => navigate("/cart")}>
-            <ShoppingCartIcon fontSize="small" />
-            Go to Cart
-          </button>
+          wishlistCard ? (
+            <button
+              className="cart-btn"
+              onClick={() => handleCartQty("increment")}
+            >
+              Add Cart ++
+            </button>
+          ) : (
+            <button className="cart-btn" onClick={() => navigate("/cart")}>
+              <ShoppingCartIcon />
+              Go to Cart
+            </button>
+          )
         ) : (
           <button
             onClick={

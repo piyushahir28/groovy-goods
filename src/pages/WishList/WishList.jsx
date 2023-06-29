@@ -25,7 +25,7 @@ export const WishList = () => {
     <>
       <div className="wishlist-container">
         {state?.wishlist?.map((product) => {
-          return <ProductCard product={product} />;
+          return <ProductCard product={product} wishlistCard />;
         })}
       </div>
     </>
