@@ -40,5 +40,14 @@
   cursor: pointer;
 }
 
-.login-button .link {
+.password-container {
+  position: relative;
+}
+
+.password-icon {
+  position: absolute;
+  z-index: 1;
+  right: 1rem;
+  top: 0.2rem;
+  color: #8b8b8b;
 }

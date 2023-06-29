@@ -1,3 +1,5 @@
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useContext, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
@@ -5,13 +7,17 @@ import "./Login.css";
 import { AuthContext } from "../../context/AuthContext";
 
 export const Login = () => {
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const [formData, setFormData] = useState({ email: "", password: "" });
-  const { loginHandler, token } = useContext(AuthContext);
-  const navigate = useNavigate();
+  const { loginHandler } = useContext(AuthContext);
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
     loginHandler(formData.email, formData.password);
+  };
+
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
   };
 
   return (
@@ -34,15 +40,29 @@ export const Login = () => {
           </div>
           <div className="input-container">
             <label htmlFor="userPassword">Password</label>
-            <input
-              type="password"
-              onChange={(e) =>
-                setFormData({ ...formData, password: e.target.value })
-              }
-              value={formData.password}
-              id="userPassword"
-              required
-            />
+            <div className="password-container">
+              <input
+                type={passwordVisible ? "text" : "password"}
+                placeholder=""
+                onChange={(e) =>
+                  setFormData({ ...formData, password: e.target.value })
+                }
+                value={formData.password}
+                id="userPassword"
+                required
+              />
+              {passwordVisible ? (
+                <VisibilityIcon
+                  onClick={() => togglePasswordVisibility()}
+                  className="password-icon"
+                />
+              ) : (
+                <VisibilityOffIcon
+                  onClick={() => togglePasswordVisibility()}
+                  className="password-icon"
+                />
+              )}
+            </div>
           </div>
           <div className="login-button">
             <button type="submit">Login</button>
