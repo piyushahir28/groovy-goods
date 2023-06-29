@@ -7,6 +7,8 @@ import { AddressModal } from "../../../components/Address/AddressModal";
 
 export const UserAddress = () => {
   const [showModal, setShowModal] = useState(false);
+  const [editAddress, setEditAddress] = useState(false);
+  const [addEditAddress, setAddEditAddress] = useState(null);
   const { state, dispatch, ToastHandler } = useContext(DataContext);
   const deleteAddressHAndler = (addressID) => {
     console.log(addressID);
@@ -19,7 +21,16 @@ export const UserAddress = () => {
 
   return (
     <>
-      <AddressModal onClose={() => setShowModal(false)} show={showModal} />
+      <AddressModal
+        onClose={() => {
+          setShowModal(false);
+          setEditAddress(false);
+          setAddEditAddress(null);
+        }}
+        show={showModal}
+        editAddress={editAddress}
+        addEditAddress={addEditAddress}
+      />
       <div className="user-details">
         <UserNav />
         <div className="address-details">
@@ -52,7 +63,16 @@ export const UserAddress = () => {
                     {state}, {country}, {pincode}
                   </p>
                   <div>
-                    <button className="btn-edit card-btn">Edit</button>
+                    <button
+                      className="btn-edit card-btn"
+                      onClick={() => {
+                        setEditAddress(true);
+                        setAddEditAddress(address);
+                        setShowModal(true);
+                      }}
+                    >
+                      Edit
+                    </button>
                     <button
                       className="btn-delete card-btn"
                       onClick={() => deleteAddressHAndler(id)}

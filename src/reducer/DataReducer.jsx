@@ -138,6 +138,21 @@ export const DataReducer = (state, action) => {
         ...state,
         addressList: updatedAddress,
       };
+      break;
+    }
+
+    case "EDIT_ADDRESS": {
+      const updatedAddress = state.addressList.map((address) => {
+        if (address.id === action.payload.id) {
+          return action.payload;
+        }
+        return address;
+      });
+      return {
+        ...state,
+        addressList: updatedAddress,
+      };
+      break;
     }
 
     default: {
