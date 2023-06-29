@@ -27,6 +27,11 @@
   font-size: 1.2rem;
 }
 
+.nav-image:hover {
+  -webkit-text-stroke: 2px var(--primary-color);
+  color: var(--secondary-color);
+}
+
 .nav-input {
   order: 3;
 }
@@ -116,5 +121,8 @@
   }
   .nav-btn .user-l {
     font-size: 2rem;
+  }
+  .user-l:hover {
+    color: black;
   }
 }
