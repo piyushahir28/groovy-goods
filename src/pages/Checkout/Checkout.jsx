@@ -1,14 +1,48 @@
+import { v4 as uuid } from "uuid";
 import { useContext, useState } from "react";
 import "./Checkout.css";
 import { DataContext } from "../../context/DataContext";
 import { useNavigate } from "react-router-dom";
 import { AddressModal } from "../../components/Address/AddressModal";
+import { AuthContext } from "../../context/AuthContext";
+import { removeFromCart } from "../../Services/Service";
 
 export const Checkout = () => {
-  const { ToastHandler, state, itemPrice, discountPrice, itemQuantity } =
-    useContext(DataContext);
+  const {
+    ToastHandler,
+    state,
+    dispatch,
+    itemPrice,
+    discountPrice,
+    itemQuantity,
+  } = useContext(DataContext);
+  const { token } = useContext(AuthContext);
   const [showModal, setShowModal] = useState(false);
   const [selectedAddress, setSelectedAddress] = useState("");
+  const navigate = useNavigate();
+  const removeFromCartHandler = async (_id, title) => {
+    const response = await removeFromCart(_id, token);
+    console.log(response);
+    dispatch({
+      type: "ADD_TO_CART",
+      payload: response,
+    });
+    ToastHandler(`${title} removed from cart.`, "success");
+  };
+  const handleOrder = () => {
+    dispatch({
+      type: "ORDER_PLACED",
+      payload: {
+        id: uuid(),
+        price: itemPrice - discountPrice + 69,
+        items: state.cart,
+        userAddress: selectedAddress,
+      },
+    });
+    state?.cart?.map(({ _id, title }) => removeFromCartHandler(_id, title));
+    navigate("/user/order");
+    ToastHandler("Order Placed Successfully", "success");
+  };
   return (
     <>
       <AddressModal
@@ -102,7 +136,7 @@ export const Checkout = () => {
           <button
             onClick={() => {
               selectedAddress
-                ? console.log("Order Placed")
+                ? handleOrder()
                 : ToastHandler("Please select a address", "warning");
             }}
           >

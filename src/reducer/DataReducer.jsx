@@ -22,6 +22,7 @@ export const initialState = {
       country: "India",
     },
   ],
+  orderList: [],
 };
 
 export const DataReducer = (state, action) => {
@@ -153,6 +154,13 @@ export const DataReducer = (state, action) => {
         addressList: updatedAddress,
       };
       break;
+    }
+
+    case "ORDER_PLACED": {
+      return {
+        ...state,
+        orderList: [...state.orderList, action.payload],
+      };
     }
 
     default: {
